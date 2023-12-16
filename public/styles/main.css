@@ -1,0 +1,145 @@
+:root{
+    --navy: #5B0888;
+    --dark-blue: #713ABE;
+    --light-blue: #9D76C1;
+    --cold: #E5CFF7;
+    --card-height: 400px;
+    --card-width: calc(var(--card-height)*2);
+    --border-color: rgb(22, 5, 34);
+}
+body{
+    background-color: var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+button{
+    margin-bottom: 30px;
+    padding: 10px 10px;
+    border-radius: 6px;
+    background-color: var(--light-blue);
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #27005D;
+    border: #27005D solid 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover{
+    background-color: #b186d8;
+}
+button:active{
+    background-color: #876aa2;
+}
+#bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 3px;
+    position: relative;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    color: var(--navy);
+    width: var(--card-width);
+    height: var(--card-height);
+    z-index: -1;
+  }
+#joke{
+    position: relative;
+    display: flex;
+    max-width: 640px;
+}
+#joke p{
+    color: var(--cold);
+    z-index: 2;
+    font-size: 1.5em;
+    text-shadow: 
+    -1px -1px 0 var(--border-color),
+     1px -1px 0 var(--border-color),
+    -1px  1px 0 var(--border-color),
+     1px  1px 0 var(--border-color);
+} 
+
+#joke::before {
+    position: absolute;
+    content: "";
+    z-index: 1;
+    top: 16%;
+    left: -1%;
+    width: 104%;
+    height: 72%;
+    border-radius: 8px;
+    background-image: linear-gradient(
+        var(--rotate),
+        rgba(73, 16, 139, 0.4),  /* Transparent purple */
+        rgba(126, 48, 225, 0.4), /* Transparent blue */
+        rgba(176, 75, 180, 0.4)  /* Transparent magenta */
+      );
+}
+#joke::after {
+    position: absolute;
+    content: "";
+    z-index: 1;
+    left: 0;
+    right: 0; 
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(62px);
+    background-image: linear-gradient(
+      var(--rotate),
+      #49108B,
+      #7E30E1,
+      #b04bb4
+
+    );
+    animation: spin 2.5s linear infinite;
+}
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+}  
+@keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    font-size: 1.1em;
+}
+@media (max-width:450px){
+    button{
+        font-size: 0.8em;
+    }
+    #bg-image{
+        max-width: 350px;
+        max-height: 350px;
+    }
+    #joke{
+        max-width: 300px;
+    }
+    #joke p{
+        font-size: 0.8em;
+    }
+    body{
+        min-height: 50vh;
+    }
+    footer{
+        position: relative;
+        padding-top: 2px;
+        font-size: 0.6em;
+    }
+    
+}

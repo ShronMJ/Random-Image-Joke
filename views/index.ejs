@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/main.css" rel="stylesheet">
+    <title>Random Image Joke</title>
+</head>
+<body>
+    <button type="button" onclick="window.location.href='/'">Show random joke</button>
+    <% if(locals.bgImage){ %>
+        <div id="bg-image" style="background-image: url('<%= bgImage %>');">        
+    <% }else{ %>
+        <div id="bg-image" style="background-image: url(../public/images/11.jpg);">   
+        <% } %>
+            <div id="joke">
+                <% if (locals.renderJoke) { %>
+                    <p> <%= renderJoke %> </p>
+                <% }else{ %>
+                    <p>No joke for today since the servers are currently facing a crisis.</p>
+                <% } %>
+            </div>
+        </div>
+    <footer>© 2023 Sharon M.J</footer>
+</body>
+</html>
