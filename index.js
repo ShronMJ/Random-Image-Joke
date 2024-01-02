@@ -1,14 +1,15 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
-import {readFile} from 'fs/promises';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
 const apiJoke = "https://v2.jokeapi.dev/joke/Miscellaneous,Dark,Pun,Spooky?type=single";
 const apiImage = "https://api.unsplash.com/search/photos";
-const clientIdPath = 'clientId.txt';
-const client_id = await readClientID();
+const client_id = process.env.API_ID_UNSPLASH;
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
